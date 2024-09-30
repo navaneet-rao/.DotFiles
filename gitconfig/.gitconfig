@@ -1,0 +1,11 @@
+[init]
+	defaultBranch = batman
+[user]
+	email = 76439641+navaneet-rao@users.noreply.github.com
+	name = Navaneet R Rao
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
