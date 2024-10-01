@@ -288,6 +288,21 @@ local keymaps = {
 		desc = "Navigate to next Harpoon file",
 	},
 
+	{
+		mode = "n",
+		key = "<leader>db",
+		action = "<cmd> DapToggleBreakpoint <CR>",
+		desc = "[ ] [d]ebug [b]reakpoint ",
+	},
+	{
+		mode = "n",
+		key = "<leader>dpr",
+		action = function()
+			require("dap-python").test_method()
+		end,
+		desc = "[d]ebug [p]ython [r]un",
+	},
+
 	-- Telescope
 	{
 		mode = "n",

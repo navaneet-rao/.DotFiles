@@ -112,6 +112,12 @@ return {
 			--  and for projects with only make use
 			-- ---> bear -- make all
 
+			lspconfig.pyright.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+				filetypes = { "python" },
+			})
+
 			lspconfig.clangd.setup({ capabilities = capabilities, on_attach = on_attach })
 
 			lspconfig.jdtls.setup({
