@@ -48,7 +48,6 @@
         "pulseaudio",
         "pulseaudio#microphone",
         "custom/notifications",
-        "custom/keybindhint",
         "custom/r_end",
         "custom/padd"
     ]
