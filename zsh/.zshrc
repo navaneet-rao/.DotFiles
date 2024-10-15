@@ -335,9 +335,9 @@ if [ -n "${NVIM_LISTEN_ADDRESS+x}" ]; then
   export MANPAGER="/usr/local/bin/nvr -c 'Man!' -o -"
 fi
 
-# if [ -z "$TMUX" ] && [ "$TERM" = "xterm-kitty" ]; then
-#   tmux attach || exec tmux new-session && exit;
-# fi
+if [ -z "$TMUX" ] && [ "$TERM" = "xterm-kitty" ]; then
+  tmux attach || exec tmux new-session && exit;
+fi
 
 python_venv() {
   MYVENV=./venv
@@ -346,6 +346,7 @@ python_venv() {
   # when you cd into a folder that doesn't
   [[ ! -d $MYVENV ]] && deactivate > /dev/null 2>&1
 }
+
 autoload -U add-zsh-hook
 add-zsh-hook chpwd python_venv
 
@@ -353,6 +354,4 @@ python_venv
 
 precmd() { print -Pn "\e]0;%n@%m: %~\a" }
 
-
-# Created by `pipx` on 2024-09-30 17:17:56
-export PATH="$PATH:/home/luke/.local/bin"
+# eval "$(starship init zsh)"

@@ -1,22 +1,37 @@
 #!/bin/sh -e
 
-# ## for bash
-# RC='\033[0m'
-# RED='\033[31m'
-# YELLOW='\033[33m'
-# GREEN='\033[32m'
-
-## for zsh
-RC=$'\033[0m'
-RED=$'\033[31m'
-YELLOW=$'\033[33m'
-GREEN=$'\033[32m'
-
 # add variables to top level so can easily be accessed by all functions
 PACKAGER=""
 SUDO_CMD=""
 SUGROUP=""
 GITPATH=""
+
+
+## TODO: need to add condections for this
+
+
+checkShell() {
+    echo "${YELLOW}Checking for type of shell...${RC}"
+
+    if [ "$SHELL" = "/bin/zsh" ] || [ "$SHELL" = "/usr/bin/zsh" ]; then
+        ## for zsh
+        RC=$'\033[0m'
+        RED=$'\033[31m'
+        YELLOW=$'\033[33m'
+        GREEN=$'\033[32m'
+        
+        # ~/.zshrc
+        # eval "$(starship init zsh)"
+        echo "${GREEN}Zsh detected${RC}"
+    else
+        ## for bash or other shells
+        RC='\033[0m'
+        RED='\033[31m'
+        YELLOW='\033[33m'
+        GREEN='\033[32m'
+        echo "${GREEN}Bash or other shell detected${RC}"
+    fi
+}
 
 command_exists() {
     command -v "$1" >/dev/null 2>&1
@@ -24,7 +39,7 @@ command_exists() {
 
 checkEnv() {
     
-    echo "${YELLOW}Checkimg for requirements...${RC}"
+    echo "${YELLOW}Checking for requirements...${RC}"
 
     ## Check for requirements.
     REQUIREMENTS='curl groups sudo'
@@ -90,6 +105,8 @@ installDepend() {
 
 }
 
+
+checkShell
 checkEnv
 installDepend
 

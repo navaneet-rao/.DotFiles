@@ -1,0 +1,23 @@
+{
+    "backlight": {
+        "device": "intel_backlight",
+        "rotate": 0,
+        "format": "{icon} {percent}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "on-scroll-up": "brightnessctl set 1%+",
+        "on-scroll-down": "brightnessctl set 1%-",
+        "min-length": 6,
+        "tooltip-format": "brightness: {icon} {percent}%",
+        "on-click": "$HOME/.config/rofi/applets/bin/brightness.sh"
+    }
+}
