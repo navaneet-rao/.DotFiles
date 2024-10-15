@@ -1,5 +1,5 @@
 {
-    "custom/wallchange": {
+    "custom/wallchange": { // TODO: redo this for SWWW or walpaper manager
         "format": "{}",
         "rotate": 0,
         "exec": "echo ; echo 󰆊 switch wallpaper",

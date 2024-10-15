@@ -3,9 +3,9 @@
         "format": "{}", //    //
         "rotate": 0,
         "exec": "echo ; echo  switch bar //  dock",
-        "on-click": "wbarconfgen.sh n",
-        "on-click-right": "wbarconfgen.sh p",
-        "on-click-middle": "sleep 0.1 && quickapps.sh kitty firefox spotify code dolphin",
+        "on-click": "$HOME/.config/rofi/launchers/type-1/launcher.sh",
+        "on-click-right": "$HOME/.config/rofi/launchers/type-4/launcher.sh",
+        "on-click-middle": "$HOME/.config/rofi/launchers/type-3/launcher.sh",
         "interval": 86400,
         "tooltip": true
     }

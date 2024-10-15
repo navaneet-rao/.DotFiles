@@ -1,5 +1,5 @@
 {
-    "custom/theme": {
+    "custom/theme": { // TODO: redo this or remove if not needed 
         "format": "{}",
         "rotate": 0,
         "exec": "echo ; echo 󰟡 switch theme",

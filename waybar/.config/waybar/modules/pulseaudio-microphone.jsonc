@@ -4,7 +4,7 @@
         "rotate": 0,
         "format-muted": "婢",
         "on-click": "pavucontrol -t 3",
-        "on-click-middle": "volumecontrol.sh -o m",
+        "on-click-middle": "volumecontrol.sh -o m", // TODO: remove the unwanted scripts or use a terminal ctl ones
         "on-scroll-up": "volumecontrol.sh -o i",
         "on-scroll-down": "volumecontrol.sh -o d",
         "tooltip-format": "{icon} {desc} // {volume}%",

@@ -31,7 +31,6 @@
     "modules-center": [
         "custom/padd",
         "custom/l_end",
-        "idle_inhibitor",
         "clock",
         "custom/r_end",
         "custom/padd"
@@ -41,6 +40,7 @@
         "custom/l_end",
         "tray",
         "battery",
+        "idle_inhibitor",
         "custom/r_end",
         "custom/l_end",
         "backlight",
