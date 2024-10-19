@@ -18,42 +18,44 @@ window#waybar {
 tooltip {
     background: @mantle;
     color: @text;
-    border-radius: 7px;
-    border-width: 0px;
+    border-radius: 8px;
+    border-width: 1px;
 }
 
 /* Workspace Button Styling */
 #workspaces button {
     box-shadow: none;
     text-shadow: none;
-    padding: 0px;
-    border-radius: 9px;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    margin-left: 0px;
-    padding-left: 3px;
-    padding-right: 3px;
-    margin-right: 0px;
+    padding: 4px 6px;
+    margin: 4px;
+    background-color: @base;
+    border-radius: 8px;
     color: @text;
-    animation: ws_normal 20s ease-in-out 1;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Default (non-active) workspace button styling */
+#workspaces button:not(.active) {
+    background-color: @surface0;
+    color: @text;
+}
+
+/* Active workspace button styling */
 #workspaces button.active {
-    background: @subtext0;
+    background-color: @peach;
     color: @crust;
-    margin-left: 3px;
-    padding-left: 12px;
-    padding-right: 12px;
-    margin-right: 3px;
-    animation: ws_active 20s ease-in-out 1;
-    transition: all 0.4s cubic-bezier(.55, -0.68, .48, 1.682);
+    padding: 4px 12px;
+    margin: 3px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Hover effect on workspace buttons */
 #workspaces button:hover {
-    background: @pink;
+    background-color: @pink;
     color: @crust;
-    animation: ws_hover 20s ease-in-out 1;
-    transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Taskbar Button Styling */
@@ -62,12 +64,10 @@ tooltip {
     text-shadow: none;
     padding: 0px;
     border-radius: 9px;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    margin-left: 0px;
-    padding-left: 3px;
-    padding-right: 3px;
-    margin-right: 0px;
+    margin: 3px 0;
+    /* Unified margin */
+    padding: 3px;
+    /* Unified padding */
     color: @text;
     animation: tb_normal 20s ease-in-out 1;
 }
@@ -75,10 +75,10 @@ tooltip {
 #taskbar button.active {
     background: @subtext0;
     color: @crust;
-    margin-left: 3px;
-    padding-left: 12px;
-    padding-right: 12px;
-    margin-right: 3px;
+    margin: 3px;
+    /* Unified margin */
+    padding: 4px 12px;
+    /* Unified padding */
     animation: tb_active 20s ease-in-out 1;
     transition: all 0.4s cubic-bezier(.55, -0.68, .48, 1.682);
 }
@@ -104,7 +104,6 @@ tooltip {
 #battery,
 #bluetooth,
 #custom-cliphist,
-#clock,
 #custom-cpuinfo,
 #cpu,
 #custom-gpuinfo,
@@ -115,7 +114,6 @@ tooltip {
 #mpris,
 #network,
 #custom-notifications,
-#custom-power,
 #pulseaudio,
 #custom-spotify,
 #taskbar,
@@ -135,9 +133,26 @@ tooltip {
     color: @text;
     background: @base;
     opacity: 1;
-    margin: 4px 0px 4px 0px;
-    padding-left: 4px;
-    padding-right: 4px;
+    margin: 4px 0;
+    padding: 4px;
+}
+
+#custom-power {
+    color: @crust;
+    background: @peach;
+    font-size: 14px;
+    border-radius: 15px;
+    margin: 4px 0px 4px 4px;
+    padding: 4px 14px 4px 8px;
+}
+
+#clock {
+    color: @peach;
+    background: @base;
+    font-size: 14px;
+    opacity: 1;
+    margin: 4px 0;
+    padding: 4px;
 }
 
 #workspaces,
@@ -172,12 +187,12 @@ tooltip {
 
 #custom-rr_end {
     border-radius: 0px 7px 7px 0px;
-    margin-right: 9px;
-    padding-right: 3px;
+    margin-right: 4px;
+    padding-right: 0px;
 }
 
 #custom-rl_end {
     border-radius: 7px 0px 0px 7px;
-    margin-left: 9px;
-    padding-left: 3px;
+    margin-left: 4px;
+    padding-left: 0px;
 }
