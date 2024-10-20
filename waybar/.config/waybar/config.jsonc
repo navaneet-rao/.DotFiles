@@ -23,9 +23,7 @@
         "custom/rl_end",
         "wlr/taskbar",
         "custom/rr_end",
-        "custom/rl_end",
         "hyprland/window",
-        "custom/rr_end",
         "custom/padd"
     ],
     "modules-center": [
@@ -37,6 +35,7 @@
     ],
     "modules-right": [
         "custom/padd",
+        "mpris",
         "custom/rl_end",
         "tray",
         "battery",

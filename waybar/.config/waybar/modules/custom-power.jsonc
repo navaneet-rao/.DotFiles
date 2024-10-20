@@ -1,6 +1,6 @@
 {
     "custom/power": {
-        "format": "{}",
+        "format": "",
         "rotate": 0,
         "exec": "echo ; echo  logout",
         "on-click": "$HOME/.config/rofi/applets/bin/powermenu.sh",

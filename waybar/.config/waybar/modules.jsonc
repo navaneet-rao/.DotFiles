@@ -15,6 +15,7 @@
         "$HOME/.config/waybar/modules/blacklight.jsonc",
         "$HOME/.config/waybar/modules/custom-notifications.jsonc",
         "$HOME/.config/waybar/modules/hyprland-workspaces.jsonc",
-        "$HOME/.config/waybar/modules/wlr-taskbar.jsonc"
+        "$HOME/.config/waybar/modules/wlr-taskbar.jsonc",
+        "$HOME/.config/waybar/modules/mpris.jsonc"
     ]
 }

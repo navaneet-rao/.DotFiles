@@ -1,5 +1,8 @@
 return {
 	{
+		"elkowar/yuck.vim",
+	},
+	{
 		"lambdalisue/vim-suda",
 	},
 	{

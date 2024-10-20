@@ -2,8 +2,7 @@
 * {
     border: none;
     border-radius: 0px;
-    /* font-family: "JetBrainsMono Nerd Font"; */
-    font-family: "CascadiaCode Mono Nerd Font Reg";
+    font-family: "JetBrainsMono Nerd Font Reg";
     font-weight: bold;
     font-size: 10px;
     min-height: 10px;
@@ -65,29 +64,26 @@ tooltip {
     padding: 0px;
     border-radius: 9px;
     margin: 3px 0;
-    /* Unified margin */
     padding: 3px;
-    /* Unified padding */
     color: @text;
-    animation: tb_normal 20s ease-in-out 1;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    /* animation: tb_normal 20s ease-in-out 1; */
 }
 
 #taskbar button.active {
     background: @subtext0;
     color: @crust;
     margin: 3px;
-    /* Unified margin */
     padding: 4px 12px;
-    /* Unified padding */
     animation: tb_active 20s ease-in-out 1;
-    transition: all 0.4s cubic-bezier(.55, -0.68, .48, 1.682);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 #taskbar button:hover {
     background: @pink;
     color: @crust;
     animation: tb_hover 20s ease-in-out 1;
-    transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Tray Menu Styling */
@@ -111,7 +107,6 @@ tooltip {
 #custom-keybindhint,
 #language,
 #memory,
-#mpris,
 #network,
 #custom-notifications,
 #pulseaudio,
@@ -122,7 +117,6 @@ tooltip {
 #custom-updates,
 #custom-wallchange,
 #custom-wbar,
-#window,
 #workspaces,
 #custom-l_end,
 #custom-r_end,
@@ -137,12 +131,21 @@ tooltip {
     padding: 4px;
 }
 
+#custom-media,
+#mpris,
+#window {
+    color: @green;
+    opacity: 1;
+    margin: 4px 0;
+    padding: 4px;
+}
+
 #custom-power {
     color: @crust;
     background: @peach;
     font-size: 14px;
-    border-radius: 15px;
-    margin: 4px 0px 4px 4px;
+    border-radius: 14px;
+    margin: 5px 0px 4px 0px;
     padding: 4px 14px 4px 8px;
 }
 
