@@ -23,11 +23,13 @@ _G.LSPsList = {
 	"lemminx",
 	"eslint",
 	"gradle_ls",
+	"cssmodules_ls",
 	-- "ltex",
 	"vtsls",
 	"glint",
 	"ts_ls",
 	"prismals",
+	"css_variables",
 }
 
 _G.java_runtimes = {}

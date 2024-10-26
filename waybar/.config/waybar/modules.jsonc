@@ -18,6 +18,9 @@
         "$HOME/.config/waybar/modules/wlr-taskbar.jsonc",
         "$HOME/.config/waybar/modules/mpris.jsonc",
     ],
+    "custom/expand-icon-1": {
+        "format": "︙"
+    },
     "group/expand-1": {
         "orientation": "horizontal",
         "drawer": {
@@ -28,11 +31,11 @@
             // "click-to-reveal": true
         },
         "modules": [
-            "custom/notifications",
+            "custom/expand-icon-1",
             "backlight",
-            // "backlight/slider"
+            "backlight/slider",
             "pulseaudio",
-            // "pulseaudio/slider",
+            "pulseaudio/slider",
             "pulseaudio#microphone",
             "network"
         ]
