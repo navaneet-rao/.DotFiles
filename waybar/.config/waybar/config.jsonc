@@ -42,16 +42,12 @@
         "idle_inhibitor",
         "custom/rr_end",
         "custom/rl_end",
-        "backlight",
-        "network",
-        "pulseaudio",
-        "pulseaudio#microphone",
-        "custom/notifications",
+        "group/expand-1",
         "custom/rr_end",
         "custom/rl_end",
         "clock",
         "custom/rr_end",
         "custom/power",
         "custom/padd"
-    ]
+    ],
 }

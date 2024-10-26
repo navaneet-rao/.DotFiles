@@ -16,6 +16,39 @@
         "$HOME/.config/waybar/modules/custom-notifications.jsonc",
         "$HOME/.config/waybar/modules/hyprland-workspaces.jsonc",
         "$HOME/.config/waybar/modules/wlr-taskbar.jsonc",
-        "$HOME/.config/waybar/modules/mpris.jsonc"
-    ]
+        "$HOME/.config/waybar/modules/mpris.jsonc",
+    ],
+    "group/expand-1": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 599,
+            "children-class": "not-power",
+            "transition-to-left": false,
+            "hover-to-reveal": true
+            // "click-to-reveal": true
+        },
+        "modules": [
+            "custom/notifications",
+            "backlight",
+            // "backlight/slider"
+            "pulseaudio",
+            // "pulseaudio/slider",
+            "pulseaudio#microphone",
+            "network"
+        ]
+    },
+    "backlight/slider": {
+        "min": 4,
+        "max": 99,
+        "rotate": -1,
+        "device": "intel_backlight",
+        "scroll-step": 0
+    },
+    "pulseaudio/slider": {
+        "min": 4,
+        "max": 99,
+        "rotate": -1,
+        "device": "pulseaudio",
+        "scroll-step": 0
+    }
 }

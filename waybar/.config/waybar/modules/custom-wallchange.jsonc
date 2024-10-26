@@ -1,12 +1,9 @@
 {
-    "custom/wallchange": { // TODO: redo this for SWWW or walpaper manager
-        "format": "{}",
+    "custom/wallchange": {
+        "format": " {}",
         "rotate": 0,
-        "exec": "echo ; echo 󰆊 switch wallpaper",
-        "on-click": "swwwallpaper.sh -n",
-        "on-click-right": "swwwallpaper.sh -p",
-        "on-click-middle": "sleep 0.1 && swwwallselect.sh",
-        "interval": 86400, // once every day
-        "tooltip": true
+        "on-click": "waypaper-engine next-image",
+        "on-click-right": "waypaper-engine previous-image ",
+        "tooltip-format": "󰆊  switch wallpaper"
     }
 }
