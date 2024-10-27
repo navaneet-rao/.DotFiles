@@ -1,9 +1,10 @@
 {
+    // needs node version 21
     "custom/wallchange": {
         "format": " {}",
         "rotate": 0,
         "on-click": "waypaper-engine next-image",
         "on-click-right": "waypaper-engine previous-image ",
-        "tooltip-format": "󰆊  switch wallpaper"
-    }
+        "tooltip-format": "󰆊  switch wallpaper",
+    },
 }

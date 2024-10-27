@@ -1,57 +1,120 @@
 {
-    "include": [
-        "$HOME/.config/waybar/modules/battery.jsonc",
-        "$HOME/.config/waybar/modules/idle_inhibitor.jsonc",
-        "$HOME/.config/waybar/modules/custom-wbar.jsonc",
-        "$HOME/.config/waybar/modules/custom-wallchange.jsonc",
-        "$HOME/.config/waybar/modules/network.jsonc",
-        "$HOME/.config/waybar/modules/pulseaudio-microphone.jsonc",
-        "$HOME/.config/waybar/modules/padding-modules.jsonc",
-        "$HOME/.config/waybar/modules/tray.jsonc",
-        "$HOME/.config/waybar/modules/custom-theme.jsonc",
-        "$HOME/.config/waybar/modules/clock.jsonc",
-        "$HOME/.config/waybar/modules/custom-cliphist.jsonc",
-        "$HOME/.config/waybar/modules/custom-power.jsonc",
-        "$HOME/.config/waybar/modules/blacklight.jsonc",
-        "$HOME/.config/waybar/modules/custom-notifications.jsonc",
-        "$HOME/.config/waybar/modules/hyprland-workspaces.jsonc",
-        "$HOME/.config/waybar/modules/wlr-taskbar.jsonc",
-        "$HOME/.config/waybar/modules/mpris.jsonc",
+  "include": [
+    "$HOME/.config/waybar/modules/battery.jsonc",
+    "$HOME/.config/waybar/modules/idle_inhibitor.jsonc",
+    "$HOME/.config/waybar/modules/custom-wbar.jsonc",
+    "$HOME/.config/waybar/modules/custom-wallchange.jsonc",
+    "$HOME/.config/waybar/modules/network.jsonc",
+    "$HOME/.config/waybar/modules/pulseaudio-microphone.jsonc",
+    "$HOME/.config/waybar/modules/padding-modules.jsonc",
+    "$HOME/.config/waybar/modules/tray.jsonc",
+    "$HOME/.config/waybar/modules/custom-theme.jsonc",
+    "$HOME/.config/waybar/modules/clock.jsonc",
+    "$HOME/.config/waybar/modules/custom-cliphist.jsonc",
+    "$HOME/.config/waybar/modules/custom-power.jsonc",
+    "$HOME/.config/waybar/modules/blacklight.jsonc",
+    "$HOME/.config/waybar/modules/custom-notifications.jsonc",
+    "$HOME/.config/waybar/modules/hyprland-workspaces.jsonc",
+    "$HOME/.config/waybar/modules/wlr-taskbar.jsonc",
+    "$HOME/.config/waybar/modules/mpris.jsonc",
+    "$HOME/.config/waybar/modules/bluetooth.jsonc",
+  ],
+  "custom/expand-icon-1": {
+    "format": " ",
+  },
+  "custom/expand-icon-2": {
+    "format": "󱘖 ",
+  },
+  "group/expand-1": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 599,
+      "children-class": "not-power",
+      "transition-to-left": false,
+      // "hover-to-reveal": true,
+      "click-to-reveal": true,
+    },
+    "modules": [
+      "custom/expand-icon-1",
+      "group/expand-backlight",
+      "group/expand-audio",
     ],
-    "custom/expand-icon-1": {
-        "format": "︙"
+  },
+  "group/expand-audio": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 599,
+      "children-class": "not-power",
+      "transition-to-left": false,
+      "hover-to-reveal": true,
+      // "click-to-reveal": true
     },
-    "group/expand-1": {
-        "orientation": "horizontal",
-        "drawer": {
-            "transition-duration": 599,
-            "children-class": "not-power",
-            "transition-to-left": false,
-            "hover-to-reveal": true
-            // "click-to-reveal": true
-        },
-        "modules": [
-            "custom/expand-icon-1",
-            "backlight",
-            "backlight/slider",
-            "pulseaudio",
-            "pulseaudio/slider",
-            "pulseaudio#microphone",
-            "network"
-        ]
+    "modules": ["pulseaudio", "pulseaudio/slider", "pulseaudio#microphone"],
+  },
+  "group/expand-backlight": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 599,
+      "children-class": "not-power",
+      "transition-to-left": false,
+      "hover-to-reveal": true,
+      // "click-to-reveal": true
     },
-    "backlight/slider": {
-        "min": 4,
-        "max": 99,
-        "rotate": -1,
-        "device": "intel_backlight",
-        "scroll-step": 0
+    "modules": ["backlight", "backlight/slider"],
+  },
+  "group/expand-2": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 599,
+      "children-class": "not-power",
+      "transition-to-left": false,
+      "hover-to-reveal": true,
+      // "click-to-reveal": true
     },
-    "pulseaudio/slider": {
-        "min": 4,
-        "max": 99,
-        "rotate": -1,
-        "device": "pulseaudio",
-        "scroll-step": 0
-    }
+    "modules": ["custom/expand-icon-2", "network", "bluetooth"],
+  },
+  // "group/expand-bluetooth-menu": {
+  //   "orientation": "horizontal",
+  //   "modules": [
+  //     "bluetooth",
+  //     "custom/bluetooth-toggle",
+  //     "custom/bluetooth-audio-settings",
+  //     "custom/bluetooth-manage-devices",
+  //     "custom/bluetooth-refresh",
+  //   ],
+  // },
+  // "custom/bluetooth-toggle": {
+  //   "exec": "bluetoothctl power toggle",
+  //   "format": "󰂳 Toggle Bluetooth",
+  //   "on-click": "bluetoothctl power toggle",
+  // },
+  // "custom/bluetooth-audio-settings": {
+  //   "exec": "echo 'Audio Settings'",
+  //   "format": "󰂰 Audio Settings",
+  //   "on-click": "pavucontrol",
+  // },
+  // "custom/bluetooth-manage-devices": {
+  //   "exec": "echo 'Manage Devices'",
+  //   "format": "󰂯 Manage Devices",
+  //   "on-click": "blueman-manager",
+  // },
+  // "custom/bluetooth-refresh": {
+  //   "exec": "echo 'Refresh'",
+  //   "format": "󰁹 Refresh",
+  //   "on-click": "pkill -SIGUSR1 waybar",
+  // },
+  "backlight/slider": {
+    "min": 4,
+    "max": 99,
+    "rotate": -1,
+    "device": "intel_backlight",
+    "scroll-step": 0,
+  },
+  "pulseaudio/slider": {
+    "min": 4,
+    "max": 99,
+    "rotate": -1,
+    "device": "pulseaudio",
+    "scroll-step": 0,
+  },
 }

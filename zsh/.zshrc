@@ -354,4 +354,5 @@ python_venv
 
 precmd() { print -Pn "\e]0;%n@%m: %~\a" }
 
+eval "$(fnm env --use-on-cd --shell zsh)"
 # eval "$(starship init zsh)"
