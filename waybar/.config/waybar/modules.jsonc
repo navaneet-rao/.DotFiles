@@ -25,6 +25,17 @@
   "custom/expand-icon-2": {
     "format": "󱘖 ",
   },
+  "group/expand-menu": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 599,
+      "children-class": "not-power",
+      "transition-to-left": false,
+      "hover-to-reveal": true,
+      // "click-to-reveal": true,"custom/theme",
+    },
+    "modules": ["custom/wbar", "custom/wallchange"],
+  },
   "group/expand-1": {
     "orientation": "horizontal",
     "drawer": {

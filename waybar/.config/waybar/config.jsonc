@@ -13,10 +13,8 @@
   "modules-left": [
     "custom/padd",
     "custom/rl_end",
-    "custom/wbar",
+    "group/expand-menu",
     "custom/cliphist",
-    "custom/theme",
-    "custom/wallchange",
     "custom/rr_end",
     "custom/rl_end",
     "wlr/taskbar",

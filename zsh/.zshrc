@@ -33,7 +33,7 @@ GIT_PROMPT_SHOW_BRANCH=1      # Show the current branch
 # made from the kail zsh config
 
 setopt autocd              # change directory just by typing its name
-#setopt correct            # auto correct mistakes
+setopt correct            # auto correct mistakes
 setopt interactivecomments # allow comments in interactive mode
 setopt magicequalsubst     # enable filename expansion for arguments of the form ‘anything=expression’
 setopt nonomatch           # hide error message if there is no match for the pattern
@@ -354,5 +354,9 @@ python_venv
 
 precmd() { print -Pn "\e]0;%n@%m: %~\a" }
 
-eval "$(fnm env --use-on-cd --shell zsh)"
+# eval "$(fnm env --use-on-cd --shell zsh)"
+eval "$(fnm env --use-on-cd --shell zsh)" > /dev/null 2>&1
 # eval "$(starship init zsh)"
+
+fastfetch
+

@@ -23,12 +23,12 @@ _G.LSPsList = {
 	"lemminx",
 	"eslint",
 	"gradle_ls",
-	"cssmodules_ls",
 	-- "ltex",
 	"vtsls",
 	"glint",
 	"ts_ls",
 	"prismals",
+	"cssmodules_ls",
 	"css_variables",
 }
 
