@@ -5,20 +5,20 @@
 # ███████╗███████║██║  ██║██║  ██║╚██████╗:
 # ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝:                           
 
-source $HOME/.oh-my-zsh/oh-my-zsh.sh
+source $HOME/.config/zsh/ohmyzsh/oh-my-zsh.sh
 
-source $HOME/.oh-my-zsh/plugins/web-search/web-search.plugin.zsh
-source $HOME/.oh-my-zsh/plugins/git/git.plugin.zsh
-source $HOME/.oh-my-zsh/plugins/git-prompt/git-prompt.plugin.zsh
-source $HOME/.oh-my-zsh/plugins/gitignore/gitignore.plugin.zsh
-source $HOME/.oh-my-zsh/plugins/z/z.plugin.zsh
-source $HOME/.oh-my-zsh/plugins/colored-man-pages/colored-man-pages.plugin.zsh
-source $HOME/.oh-my-zsh/plugins/command-not-found/command-not-found.plugin.zsh
+source $HOME/.config/zsh/ohmyzsh/plugins/web-search/web-search.plugin.zsh
+source $HOME/.config/zsh/ohmyzsh/plugins/git/git.plugin.zsh
+source $HOME/.config/zsh/ohmyzsh/plugins/git-prompt/git-prompt.plugin.zsh
+source $HOME/.config/zsh/ohmyzsh/plugins/gitignore/gitignore.plugin.zsh
+source $HOME/.config/zsh/ohmyzsh/plugins/z/z.plugin.zsh
+source $HOME/.config/zsh/ohmyzsh/plugins/colored-man-pages/colored-man-pages.plugin.zsh
+source $HOME/.config/zsh/ohmyzsh/plugins/command-not-found/command-not-found.plugin.zsh
 
 
-source $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
-source $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
-source $HOME/.oh-my-zsh/custom/plugins/you-should-use/you-should-use.plugin.zsh
+source $HOME/.config/zsh/ohmyzsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+source $HOME/.config/zsh/ohmyzsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+source $HOME/.config/zsh/ohmyzsh/custom/plugins/zsh-you-should-use/zsh-you-should-use.plugin.zsh
 
 
 # Configure Git Prompt (optional)
@@ -51,7 +51,7 @@ plugins=(
   zsh-autosuggestions
   command-not-found
   colored-man-pages
-  you-should-use
+  zsh-you-should-use
   web-search
   git-prompt
   gitignore
@@ -291,16 +291,9 @@ fi
 
 
 # NOTE: Custom aliases
-
-alias ll='ls -l'
-alias la='ls -A'
-alias l='ls -CF'
-
-alias lll='ll -a'
+alias ll='ls -lah'
 
 alias bat='batcat '
-
-alias fm='pipx run --spec ranger-fm ranger'
 
 # some git aliases
 alias gitl='git log --graph --oneline '
@@ -308,16 +301,11 @@ alias gits='git status '
 alias gitc='git commit -m '
 alias gitp='git push -u origin --all '
 
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
-
-alias vim='nvim'
 alias bfzf='fzf --preview="batcat --color=always {}"'
 alias fvim='nvim $(fzf -m --preview="batcat --color=always {}")'
 
 # alias books='~/calibre-bin/calibre/calibre --start-in-tray'
-alias books='~/calibre-bin/calibre/calibre '
-
+# alias books='~/calibre-bin/calibre/calibre '
 
 # enable auto-suggestions based on the history
 if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
@@ -335,9 +323,9 @@ if [ -n "${NVIM_LISTEN_ADDRESS+x}" ]; then
   export MANPAGER="/usr/local/bin/nvr -c 'Man!' -o -"
 fi
 
-# if [ -z "$TMUX" ] && [ "$TERM" = "xterm-kitty" ]; then
-#   tmux attach || exec tmux new-session && exit;
-# fi
+if [ -z "$TMUX" ] && [ "$TERM" = "xterm-kitty" ]; then
+  tmux attach || exec tmux new-session && exit;
+fi
 
 python_venv() {
   MYVENV=./venv
@@ -354,9 +342,5 @@ python_venv
 
 precmd() { print -Pn "\e]0;%n@%m: %~\a" }
 
-# eval "$(fnm env --use-on-cd --shell zsh)"
-eval "$(fnm env --use-on-cd --shell zsh)" > /dev/null 2>&1
-# eval "$(starship init zsh)"
-
-fastfetch
+# fastfetch
 
