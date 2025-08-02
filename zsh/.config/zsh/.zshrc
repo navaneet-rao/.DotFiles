@@ -1,36 +1,23 @@
-# ███████╗███████╗██╗  ██╗██████╗  ██████╗:
-# ╚══███╔╝██╔════╝██║  ██║██╔══██╗██╔════╝:
-#   ███╔╝ ███████╗███████║██████╔╝██║     :
-#  ███╔╝  ╚════██║██╔══██║██╔══██╗██║     :
-# ███████╗███████║██║  ██║██║  ██║╚██████╗:
-# ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝:                           
-
+# === Source Oh My Zsh Core ===
 source $HOME/.config/zsh/ohmyzsh/oh-my-zsh.sh
 
-source $HOME/.config/zsh/ohmyzsh/plugins/web-search/web-search.plugin.zsh
+# === Plugins (Manual Load for Custom Locations) ===
 source $HOME/.config/zsh/ohmyzsh/plugins/git/git.plugin.zsh
-source $HOME/.config/zsh/ohmyzsh/plugins/git-prompt/git-prompt.plugin.zsh
 source $HOME/.config/zsh/ohmyzsh/plugins/gitignore/gitignore.plugin.zsh
+source $HOME/.config/zsh/ohmyzsh/plugins/git-prompt/git-prompt.plugin.zsh
+source $HOME/.config/zsh/ohmyzsh/plugins/command-not-found/command-not-found.plugin.zsh
 source $HOME/.config/zsh/ohmyzsh/plugins/z/z.plugin.zsh
 source $HOME/.config/zsh/ohmyzsh/plugins/colored-man-pages/colored-man-pages.plugin.zsh
-source $HOME/.config/zsh/ohmyzsh/plugins/command-not-found/command-not-found.plugin.zsh
 
-
+# Custom Plugin Paths
 source $HOME/.config/zsh/ohmyzsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 source $HOME/.config/zsh/ohmyzsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 source $HOME/.config/zsh/ohmyzsh/custom/plugins/zsh-you-should-use/zsh-you-should-use.plugin.zsh
-
 
 # Configure Git Prompt (optional)
 GIT_PROMPT_ONLY_IN_BRANCH=1  # Show git status only if in a git branch
 GIT_PROMPT_SHOW_UPSTREAM=1    # Show upstream branch info
 GIT_PROMPT_SHOW_BRANCH=1      # Show the current branch
-
-
-# NOTE:
-# ~/.zshrc file for zsh interactive shells.
-# Visit https://github.com/navaneet-rao/zshrc for more information
-# made from the kail zsh config
 
 setopt autocd              # change directory just by typing its name
 setopt correct            # auto correct mistakes
@@ -105,7 +92,7 @@ setopt hist_verify            # show command with history expansion to user befo
 # force zsh to show the complete history
 alias history="history 0"
 
-# configure `time` format
+# configure time format
 TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\ncpu\t%P'
 
 # make less more friendly for non-text input files, see lesspipe(1)
@@ -147,7 +134,7 @@ configure_prompt() {
             PROMPT='%F{%(#.blue.green)}┌──${debian_chroot:+($debian_chroot)─}${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV))─}(%B%F{%(#.red.blue)}%n'$prompt_symbol$'%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}] $(git_prompt_info) %F{reset}%b%K{reset}%F{white}\n%F{%(#.blue.green)}└─%b%(#.%F{red}#.%F{blue}$)%b%F{reset} '
 
             # Right-side prompt with exit codes and background processes
-            #RPROMPT=$'%(?.. %? %F{red}%B⨯%b%F{reset})%(1j. %j %F{yellow}%B⚙%b%F{reset}.)'
+            RPROMPT=$'%(?.. %? %F{red}%B⨯%b%F{reset})%(1j. %j %F{yellow}%B⚙%b%F{reset}.)'
             ;;
         oneline)
             PROMPT='${debian_chroot:+($debian_chroot)}${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV))}%B%F{%(#.red.blue)}%n@%m%b%F{reset}:%B%F{%(#.blue.green)}%~%b%F{reset}$(git_branch)%(#.#.$) '
@@ -247,11 +234,12 @@ xterm*|rxvt*|Eterm|aterm|kterm|gnome*|alacritty)
     ;;
 esac
 
+
 precmd() {
     # Print the previously configured title
     print -Pnr -- "$TERM_TITLE"
 
-    # Print a new line before the prompt, but only if it is not the first line
+    # Print a new line before the prompt
     if [ "$NEWLINE_BEFORE_PROMPT" = yes ]; then
         if [ -z "$_NEW_LINE_BEFORE_PROMPT" ]; then
             _NEW_LINE_BEFORE_PROMPT=1
@@ -259,6 +247,9 @@ precmd() {
             print ""
         fi
     fi
+
+    # Set terminal title
+    print -Pn "\e]0;%n@%m: %~\a"
 }
 
 # enable color support of ls, less and man, and also add handy aliases
@@ -289,11 +280,10 @@ if [ -x /usr/bin/dircolors ]; then
     zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 fi
 
-
-# NOTE: Custom aliases
 alias ll='ls -lah'
-
-alias bat='batcat '
+alias bat='batcat'
+alias tputs='tput smcup'
+alias tputr='tput rmcup'
 
 # some git aliases
 alias gitl='git log --graph --oneline '
@@ -303,9 +293,8 @@ alias gitp='git push -u origin --all '
 
 alias bfzf='fzf --preview="batcat --color=always {}"'
 alias fvim='nvim $(fzf -m --preview="batcat --color=always {}")'
-
-# alias books='~/calibre-bin/calibre/calibre --start-in-tray'
-# alias books='~/calibre-bin/calibre/calibre '
+alias vim='nvim'
+alias ovim='vim'
 
 # enable auto-suggestions based on the history
 if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
@@ -324,23 +313,19 @@ if [ -n "${NVIM_LISTEN_ADDRESS+x}" ]; then
 fi
 
 if [ -z "$TMUX" ] && [ "$TERM" = "xterm-kitty" ]; then
-  tmux attach || exec tmux new-session && exit;
+  tmux attach-session -t default || tmux new-session -s default
 fi
 
 python_venv() {
-  MYVENV=./venv
-  # when you cd into a folder that contains $MYVENV
-  [[ -d $MYVENV ]] && source $MYVENV/bin/activate > /dev/null 2>&1
-  # when you cd into a folder that doesn't
-  [[ ! -d $MYVENV ]] && deactivate > /dev/null 2>&1
+  MYVENV="./venv"
+  if [[ -d "$MYVENV" ]]; then
+    source "$MYVENV/bin/activate" &>/dev/null
+  elif [[ -n "$VIRTUAL_ENV" ]]; then
+    deactivate &>/dev/null
+  fi
 }
 
 autoload -U add-zsh-hook
 add-zsh-hook chpwd python_venv
 
-python_venv
-
-precmd() { print -Pn "\e]0;%n@%m: %~\a" }
-
-# fastfetch
-
+export PATH="$PATH:$(go env GOPATH)/bin"
