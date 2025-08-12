@@ -15,12 +15,12 @@ source $HOME/.config/zsh/ohmyzsh/custom/plugins/zsh-syntax-highlighting/zsh-synt
 source $HOME/.config/zsh/ohmyzsh/custom/plugins/zsh-you-should-use/zsh-you-should-use.plugin.zsh
 
 # Configure Git Prompt (optional)
-GIT_PROMPT_ONLY_IN_BRANCH=1  # Show git status only if in a git branch
+GIT_PROMPT_ONLY_IN_BRANCH=1   # Show git status only if in a git branch
 GIT_PROMPT_SHOW_UPSTREAM=1    # Show upstream branch info
 GIT_PROMPT_SHOW_BRANCH=1      # Show the current branch
 
 setopt autocd              # change directory just by typing its name
-setopt correct            # auto correct mistakes
+setopt correct             # auto correct mistakes
 setopt interactivecomments # allow comments in interactive mode
 setopt magicequalsubst     # enable filename expansion for arguments of the form ‘anything=expression’
 setopt nonomatch           # hide error message if there is no match for the pattern
@@ -46,20 +46,31 @@ plugins=(
   z 
 )
 
-# TODO: redo keymaps
-# configure key keybindings
-bindkey -e                                        # emacs key bindings
-bindkey ' ' magic-space                           # do history expansion on space
-bindkey '^U' backward-kill-line                   # ctrl + U
-bindkey '^[[3;5~' kill-word                       # ctrl + Supr
-bindkey '^[[3~' delete-char                       # delete
-bindkey '^[[1;5C' forward-word                    # ctrl + ->
-bindkey '^[[1;5D' backward-word                   # ctrl + <-
-bindkey '^[[5~' beginning-of-buffer-or-history    # page up
-bindkey '^[[6~' end-of-buffer-or-history          # page down
-bindkey '^[[H' beginning-of-line                  # home
-bindkey '^[[F' end-of-line                        # end
-bindkey '^[[Z' undo                               # shift + tab undo last action
+bindkey -v
+
+# Mode indicator in prompt
+function zle-keymap-select {
+  if [[ $KEYMAP == vicmd ]]; then
+    RPROMPT="%F{yellow}[N]%f"
+  else
+    RPROMPT="%F{green}[I]%f"
+  fi
+  zle reset-prompt
+}
+zle -N zle-keymap-select
+
+# Keybinds (edit as needed)
+bindkey -M vicmd 'i' vi-insert
+bindkey -M vicmd 'b' backward-word
+bindkey -M vicmd 'w' forward-word
+bindkey -M vicmd 'd' kill-word
+bindkey -M vicmd '^' beginning-of-line
+bindkey -M vicmd '$' end-of-line
+bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^H' backward-delete-char
+bindkey -M viins '^U' backward-kill-line
+bindkey -M viins '^W' backward-kill-word
+bindkey -M vicmd 'u' undo
 
 # enable completion features
 autoload -Uz compinit
@@ -234,7 +245,6 @@ xterm*|rxvt*|Eterm|aterm|kterm|gnome*|alacritty)
     ;;
 esac
 
-
 precmd() {
     # Print the previously configured title
     print -Pnr -- "$TERM_TITLE"
@@ -251,6 +261,7 @@ precmd() {
     # Set terminal title
     print -Pn "\e]0;%n@%m: %~\a"
 }
+
 
 # enable color support of ls, less and man, and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -294,7 +305,6 @@ alias gitp='git push -u origin --all '
 alias bfzf='fzf --preview="batcat --color=always {}"'
 alias fvim='nvim $(fzf -m --preview="batcat --color=always {}")'
 alias vim='nvim'
-alias ovim='vim'
 
 # enable auto-suggestions based on the history
 if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
@@ -312,7 +322,7 @@ if [ -n "${NVIM_LISTEN_ADDRESS+x}" ]; then
   export MANPAGER="/usr/local/bin/nvr -c 'Man!' -o -"
 fi
 
-if [ -z "$TMUX" ] && [ "$TERM" = "xterm-kitty" ]; then
+if [ -z "$TMUX" ] && { [ "$TERM" = "xterm-kitty" ] || [ "$TERM" = "alacritty" ]; }; then
   tmux attach-session -t default || tmux new-session -s default
 fi
 
