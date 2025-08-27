@@ -18,6 +18,10 @@ fi
 
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 
+. "$HOME/.cargo/env"
+
+export PATH=$PATH:/usr/local/go/bin
+
 # fnm
 FNM_PATH="/home/navaneet/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
@@ -25,4 +29,4 @@ if [ -d "$FNM_PATH" ]; then
   eval "`fnm env`"
 fi
 
-
+export ZDOTDIR="$HOME/.config/zsh"

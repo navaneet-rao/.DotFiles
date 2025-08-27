@@ -59,18 +59,24 @@ function zle-keymap-select {
 }
 zle -N zle-keymap-select
 
-# Keybinds (edit as needed)
-bindkey -M vicmd 'i' vi-insert
-bindkey -M vicmd 'b' backward-word
-bindkey -M vicmd 'w' forward-word
-bindkey -M vicmd 'd' kill-word
-bindkey -M vicmd '^' beginning-of-line
-bindkey -M vicmd '$' end-of-line
-bindkey -M viins '^?' backward-delete-char
-bindkey -M viins '^H' backward-delete-char
-bindkey -M viins '^U' backward-kill-line
-bindkey -M viins '^W' backward-kill-word
-bindkey -M vicmd 'u' undo
+# Movement
+bindkey -e
+bindkey '^A' beginning-of-line        # Ctrl + A → beginning of line
+bindkey '^E' end-of-line              # Ctrl + E → end of line
+bindkey '^B' backward-char            # Ctrl + B → move back a char
+bindkey '^F' forward-char             # Ctrl + F → move forward a char
+bindkey '^[b' backward-word           # Alt + b → move backward a word
+bindkey '^[f' forward-word            # Alt + f → move forward a word
+
+# Deletion
+bindkey '^H' backward-delete-char     # Ctrl + H → delete char before cursor
+bindkey '^?' backward-delete-char     # DEL → delete char before cursor
+bindkey '^U' backward-kill-line       # Ctrl + U → kill to beginning of line
+bindkey '^W' backward-kill-word       # Ctrl + W → kill word before cursor
+bindkey '^[d' kill-word               # Alt + d → kill word after cursor
+
+# Undo
+bindkey '^_' undo                      # Ctrl + _ → undo last change
 
 # enable completion features
 autoload -Uz compinit
@@ -322,7 +328,7 @@ if [ -n "${NVIM_LISTEN_ADDRESS+x}" ]; then
   export MANPAGER="/usr/local/bin/nvr -c 'Man!' -o -"
 fi
 
-if [ -z "$TMUX" ] && { [ "$TERM" = "xterm-kitty" ] || [ "$TERM" = "alacritty" ]; }; then
+if [ -z "$TMUX" ] && { [ "$TERM" = "xterm-kitty" ] || [ "$TERM" = "Alacritty" ]; }; then
   tmux attach-session -t default || tmux new-session -s default
 fi
 
@@ -338,4 +344,7 @@ python_venv() {
 autoload -U add-zsh-hook
 add-zsh-hook chpwd python_venv
 
-export PATH="$PATH:$(go env GOPATH)/bin"
+export LANG=en_IN.UTF-8
+export LANGUAGE=en_IN:en
+export LC_ALL=en_IN.UTF-8
+
